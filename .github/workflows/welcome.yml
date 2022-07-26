@@ -1,13 +1,13 @@
 name: Post welcome comment
 on:
   pull_request:
-    types: [opened]
+    types: [opened, updated]
 jobs:
   build:
     name: Post welcome comment
     runs-on: ubuntu-latest
     steps:
-      - run: gh pr comment $PR_URL --body "Thank you for your pull request. Our team is reviewing your changes."
+      - run: gh pr comment $PR_URL --body "Thank you for your pull request. Our team is reviewing your code."
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PR_URL: ${{ github.event.pull_request.html_url }}
